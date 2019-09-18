@@ -1,0 +1,22 @@
+{
+    "name": "jovo-component-email-ts",
+    "version": "1.0.0",
+    "description": "",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "dependencies": {
+        "@types/express": "^4.17.1",
+        "@types/jwt-decode": "^2.2.1",
+        "@types/node": "^12.7.5",
+        "jovo-framework": "^2.2.15",
+        "jwt-decode": "^2.2.0"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "typescript": "^3.6.3"
+    }
+}
