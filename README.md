@@ -91,5 +91,24 @@ module.exports = {
 };
 ```
 
+If you choose, the Alexa Contact Permissions, you have to add the permission to your `project.js` file:
+
+```js
+// project.js
+
+module.exports = {
+    alexaSkill: {
+       nlu: 'alexa',
+       manifest: {
+           permissions: [
+               {
+                   name: 'alexa::profile:email:read'
+               }
+           ]
+       }
+    },
+    // ...
+};
+```
 
 > [Find out more about Conversational Component's configuration](https://www.jovo.tech/docs/components#configuration)
