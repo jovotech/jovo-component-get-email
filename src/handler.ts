@@ -23,6 +23,10 @@ type STATUS = 'SUCCESSFUL' | 'ERROR' | 'REJECTED';
  * @param this: Jovo object to operate on. 
  */
 async function START(this: Jovo) {
+    if (this.$components.GetEmail.data.email) {
+        return sendComponentResponse(this, 'SUCCESSFUL', this.$components.GetEmail.data);
+    }
+    
     const data: Data = {};
     // @ts-ignore
     if (this.isAlexaSkill()) {
