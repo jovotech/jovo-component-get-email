@@ -28,14 +28,15 @@ Last but not least you have to include the component in your `app.js`:
 
 import { GetEmail } from './components/jovo-component-get-email';
 
-app.useComponents(new GetEmail());
-
+const GetEmailComponent = new GetEmail();
+app.useComponents(GetEmailComponent);
 // @language=javascript
 // src/app.js
 
 const { GetEmail } = require("../components/jovo-component-get-email/index");
 
-app.useComponents(new GetEmail());
+const GetEmailComponent = new GetEmail();
+app.useComponents(GetEmailComponent);
 ```
 
 ## Response
