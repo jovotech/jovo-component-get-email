@@ -22,14 +22,14 @@ type STATUS = 'SUCCESSFUL' | 'ERROR' | 'REJECTED';
  * @param this: Jovo object to operate on. 
  */
 async function START(this: Jovo) {
-    if (this.$components[this.getActiveComponent()!.name].data.email) {
-        return sendComponentResponse(this, 'SUCCESSFUL', this.$components[this.getActiveComponent()!.name].data);
+    if (this.getActiveComponent()!.data.email) {
+        return sendComponentResponse(this, 'SUCCESSFUL', this.getActiveComponent()!.data);
     }
     
     const data: Data = {};
     // @ts-ignore
     if (this.isAlexaSkill()) {
-        const config: Config = this.$components[this.getActiveComponent()!.name].config.alexa;
+        const config: Config = this.getActiveComponent()!.config.alexa;
         const token = this.getAccessToken();
 
         if (config.type === 'account-linking') {
@@ -64,7 +64,7 @@ async function START(this: Jovo) {
         }
         // @ts-ignore
     } else if (this.isGoogleAction()) {
-        const config: Config = this.$components[this.getActiveComponent()!.name].config.googleAssistant;
+        const config: Config = this.getActiveComponent()!.config.googleAssistant;
         const token = this.getAccessToken();
         if (!token) {
             // @ts-ignore
@@ -82,7 +82,7 @@ async function ON_SIGN_IN(this: Jovo) {
     const {
         alexa: alexaConfig,
         googleAssistant: googleAssistantConfig
-    } = this.$components[this.getActiveComponent()!.name].config;
+    } = this.getActiveComponent()!.config;
 
     const data: Data = {};
     const token = this.getAccessToken()!;
