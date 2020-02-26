@@ -2,8 +2,7 @@
 
 import * as https from 'https';
 import * as jwtDecode from 'jwt-decode';
-import { Handler, Jovo } from 'jovo-core';
-import { ComponentResponse } from 'jovo-framework';
+import { ComponentResponse, Handler, Jovo } from 'jovo-framework';
 
 interface Data {
     email?: string;
@@ -23,14 +22,14 @@ type STATUS = 'SUCCESSFUL' | 'ERROR' | 'REJECTED';
  * @param this: Jovo object to operate on. 
  */
 async function START(this: Jovo) {
-    if (this.$components.GetEmail.data.email) {
-        return sendComponentResponse(this, 'SUCCESSFUL', this.$components.GetEmail.data);
+    if (this.$components[this.getActiveComponent()!.name].data.email) {
+        return sendComponentResponse(this, 'SUCCESSFUL', this.$components[this.getActiveComponent()!.name].data);
     }
     
     const data: Data = {};
     // @ts-ignore
     if (this.isAlexaSkill()) {
-        const config: Config = this.$components.GetEmail.config.alexa;
+        const config: Config = this.$components[this.getActiveComponent()!.name].config.alexa;
         const token = this.getAccessToken();
 
         if (config.type === 'account-linking') {
@@ -65,7 +64,7 @@ async function START(this: Jovo) {
         }
         // @ts-ignore
     } else if (this.isGoogleAction()) {
-        const config: Config = this.$components.GetEmail.config.googleAssistant;
+        const config: Config = this.$components[this.getActiveComponent()!.name].config.googleAssistant;
         const token = this.getAccessToken();
         if (!token) {
             // @ts-ignore
@@ -83,7 +82,7 @@ async function ON_SIGN_IN(this: Jovo) {
     const {
         alexa: alexaConfig,
         googleAssistant: googleAssistantConfig
-    } = this.$components.GetEmail.config;
+    } = this.$components[this.getActiveComponent()!.name].config;
 
     const data: Data = {};
     const token = this.getAccessToken()!;
@@ -175,8 +174,6 @@ function sendComponentResponse(jovo: Jovo, status: STATUS, data?: object, error?
 }
 
 export const GetEmailHandler: Handler = {
-    GetEmail: {
-        START,
-        ON_SIGN_IN
-    }
+    START,
+    ON_SIGN_IN
 };
