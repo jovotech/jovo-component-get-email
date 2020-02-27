@@ -28,15 +28,14 @@ Last but not least you have to include the component in your `app.js`:
 
 import { GetEmail } from './components/jovo-component-get-email';
 
-const GetEmailComponent = new GetEmail();
-app.useComponents(GetEmailComponent);
+app.useComponents(new GetEmail());
+
 // @language=javascript
 // src/app.js
 
 const { GetEmail } = require("../components/jovo-component-get-email/index");
 
-const GetEmailComponent = new GetEmail();
-app.useComponents(GetEmailComponent);
+app.useComponents(new GetEmail());
 ```
 
 ## Response
@@ -66,7 +65,7 @@ The component allows you to fetch the users email address, either with Account L
 module.exports = {
     // ...
     components: {
-        GetEmailComponent: {
+        'jovo-component-get-email': {
             alexa: {
                 type: 'contact-permissions|account-linking',
                 // 
