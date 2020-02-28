@@ -1,5 +1,5 @@
 {
-    "name": "jovo-component-email-ts",
+    "name": "jovo-component-get-email",
     "version": "3.0.0",
     "description": "",
     "main": "dist/index.js",
@@ -15,9 +15,13 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "tsc": "tsc"
     },
-    "author": "",
-    "license": "ISC",
+    "author": "jovotech",
+    "license": "Apache-2.0",
     "devDependencies": {
         "typescript": "^3.6.3"
-    }
+    },
+    "files": [
+        "dist/**/*",
+        "models/*"
+    ]
 }
