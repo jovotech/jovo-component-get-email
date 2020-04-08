@@ -11,14 +11,12 @@
         "outDir": "dist",
         "sourceMap": true,
         "removeComments": true,
-        "types": [
-            "node"
-        ],
         "resolveJsonModule": true
     },
     "include": [
         "src/**/*.json",
         "src/**/*.ts",
-        "*.ts"
+        "*.ts",
+        "test/**/*",
     ]
 }
