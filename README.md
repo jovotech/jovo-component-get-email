@@ -33,7 +33,7 @@ app.useComponents(new GetEmail());
 // @language=javascript
 // src/app.js
 
-const { GetEmail } = require("../components/jovo-component-get-email/index");
+const { GetEmail } = require('../components/jovo-component-get-email/index');
 
 app.useComponents(new GetEmail());
 ```
@@ -63,31 +63,31 @@ The component allows you to fetch the users email address, either with Account L
 // config.js
 
 module.exports = {
-    // ...
-    components: {
-        'jovo-component-get-email': {
-            alexa: {
-                type: 'contact-permissions|account-linking',
-                // 
-                // If you choose to use account linking in your skill, 
-                // you have the option to choose either Login-With-Amazon or Auth0 as a provider.
-                //
-                // accountLinkingProvider: 'login-with-amazon'
-                //
-                // accountLinkingProvider: 'auth0'
-                // uri: 'https://your-profile.auth0.com/userinfo'
-            },
-            googleAssistant: {
-                // For Google Assistant, as of now, Account Linking is the only option to fetch a users email address. 
-                // As for Alexa, you have the choice between Auth0 or the platform-specific provider Login-With-Google.
-                //
-                accountLinkingProvider: 'login-with-google'
-                //
-                // accountLinkingProvider: 'auth0',
-                // uri: 'https://your-profile.auth0.com/userinfo'
-            }
-        }
-    }
+  // ...
+  components: {
+    'jovo-component-get-email': {
+      alexa: {
+        type: 'contact-permissions|account-linking',
+        //
+        // If you choose to use account linking in your skill,
+        // you have the option to choose either Login-With-Amazon or Auth0 as a provider.
+        //
+        // accountLinkingProvider: 'login-with-amazon'
+        //
+        // accountLinkingProvider: 'auth0'
+        // uri: 'https://your-profile.auth0.com/userinfo'
+      },
+      googleAssistant: {
+        // For Google Assistant, as of now, Account Linking is the only option to fetch a users email address.
+        // As for Alexa, you have the choice between Auth0 or the platform-specific provider Login-With-Google.
+        //
+        accountLinkingProvider: 'login-with-google',
+        //
+        // accountLinkingProvider: 'auth0',
+        // uri: 'https://your-profile.auth0.com/userinfo'
+      },
+    },
+  },
 };
 ```
 
@@ -97,17 +97,17 @@ If you choose, the Alexa Contact Permissions, you have to add the permission to 
 // project.js
 
 module.exports = {
-    alexaSkill: {
-       nlu: 'alexa',
-       manifest: {
-           permissions: [
-               {
-                   name: 'alexa::profile:email:read'
-               }
-           ]
-       }
+  alexaSkill: {
+    nlu: 'alexa',
+    manifest: {
+      permissions: [
+        {
+          name: 'alexa::profile:email:read',
+        },
+      ],
     },
-    // ...
+  },
+  // ...
 };
 ```
 
