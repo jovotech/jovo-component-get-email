@@ -22,9 +22,5 @@
         "jest": "^25.2.7",
         "ts-jest": "^25.3.1",
         "typescript": "^3.6.3"
-    },
-    "files": [
-        "dist/**/*",
-        "models/*"
-    ]
+    }
 }

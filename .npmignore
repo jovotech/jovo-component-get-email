@@ -1,0 +1,5 @@
+test/
+.gitignore
+.npmignore
+LICENSE
+tsconfig.json
